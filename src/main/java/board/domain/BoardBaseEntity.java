@@ -6,39 +6,39 @@ import java.util.Date;
 public class BoardBaseEntity implements Serializable
 {
 	/**
-	 * 번호
+	 * 번호 (sequence)
 	 */
 	private int seq;
 	
 	/**
-	 * 등록일시
+	 * 등록 일시 (register date)
 	 */
-	private Date wdate;
+	private Date rdate;
 	
 	/**
-	 * 등록자 아이디
+	 * 등록자 아이디 (registerer id)
 	 */
-	private String wid;
+	private String rerid;
 	
 	/**
-	 * 등록자 이름
+	 * 등록자 이름 (registerer name)
 	 */
-	private String wnm;
+	private String rernm;
 	
 	/**
-	 * 수정일시
+	 * 수정 일시 (modify date)
 	 */
-	private Date edate;
+	private Date mdate;
 	
 	/**
-	 * 수정자 아이디
+	 * 수정자 아이디 (modifier id)
 	 */
-	private String eid;
+	private String merid;
 	
 	/**
-	 * 수정자 이름
+	 * 수정자 이름(modifier name)
 	 */
-	private String enm;
+	private String mernm;
 	
 	public int getSeq() {
 		return seq;
@@ -48,51 +48,51 @@ public class BoardBaseEntity implements Serializable
 		this.seq = seq;
 	}
 
-	public Date getWdate() {
-		return wdate;
+	public Date getRdate() {
+		return rdate;
 	}
 
-	public void setWdate(Date wdate) {
-		this.wdate = wdate;
+	public void setRdate(Date wdate) {
+		this.rdate = wdate;
 	}
 
-	public String getWid() {
-		return wid;
+	public String getRerid() {
+		return rerid;
 	}
 
-	public void setWid(String wid) {
-		this.wid = wid;
+	public void setRerid(String wid) {
+		this.rerid = wid;
 	}
 
-	public String getWnm() {
-		return wnm;
+	public String getRernm() {
+		return rernm;
 	}
 
-	public void setWnm(String wnm) {
-		this.wnm = wnm;
+	public void setRernm(String wnm) {
+		this.rernm = wnm;
 	}
 
-	public Date getEdate() {
-		return edate;
+	public Date getMdate() {
+		return mdate;
 	}
 
-	public void setEdate(Date edate) {
-		this.edate = edate;
+	public void setMdate(Date edate) {
+		this.mdate = edate;
 	}
 
-	public String getEid() {
-		return eid;
+	public String getMerid() {
+		return merid;
 	}
 
-	public void setEid(String eid) {
-		this.eid = eid;
+	public void setMerid(String eid) {
+		this.merid = eid;
 	}
 
-	public String getEnm() {
-		return enm;
+	public String getMernm() {
+		return mernm;
 	}
 
-	public void setEnm(String enm) {
-		this.enm = enm;
+	public void setMernm(String enm) {
+		this.mernm = enm;
 	}
 }

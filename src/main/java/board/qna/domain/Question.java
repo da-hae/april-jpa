@@ -9,17 +9,17 @@ public class Question extends BoardBaseEntity
 	private static final long serialVersionUID = 8182320036737210644L;
 	
 	/**
-	 * 제목
+	 * 제목 (title)
 	 */
 	private String title;
 	
 	/**
-	 * 조회수
+	 * 조회수 (hits)
 	 */
 	private int hits;
 	
 	/**
-	 * 질문 답변 목록
+	 * 질문 답변 목록 (Q&A list)
 	 */
 	private List<Qna> qnaList;
 	
@@ -48,15 +48,10 @@ public class Question extends BoardBaseEntity
 	}
 
 	public boolean isAnswerCheck() {
-		
-		int tcount = getQnaList().size();
-		int ccount = 0;
-		
-		for (Qna qna : getQnaList())
-		{
-			if ( qna.isAnswer() ) ccount++;
+		for (Qna qna : getQnaList()) {
+			if (!qna.isAnswer()) return false;
 		}
 		
-		return tcount == ccount ? true : false;
+		return true;
 	}
 }

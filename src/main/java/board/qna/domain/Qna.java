@@ -13,34 +13,40 @@ public class Qna implements Serializable
 	private int seq;
 	
 	/**
-	 * 질문 내용
+	 * 질문 내용(question content)
 	 */
 	private String qcontent;
 	
 	/**
-	 * 질문 일시
+	 * 질문 일시(question date)
 	 */
 	private Date qdate;
 	
 	/**
-	 * 답변 등록자
+	 * 질문자 ID(questioner id)
 	 */
-	private String aid;
-	
+	private String qerid;
+
 	/**
-	 * 댑변 내용
+	 * 답변 내용(answer content)
 	 */
 	private String acontent;
 
 	/**
-	 * 답변 일시
+	 * 답변 일시(answer date)
 	 */
 	private Date adate;
 	
 	/**
-	 * 소요 시간
+	 * 답변자 ID(answerer id)
 	 */
-	private int turnaroundTime;
+	private String aerid;
+	
+	/**
+	 * 응답 시간(response time)
+	 */
+	private int rtime;
+	
 	
 	public int getSeq() {
 		return seq;
@@ -66,12 +72,20 @@ public class Qna implements Serializable
 		this.qdate = qdate;
 	}
 
-	public String getAid() {
-		return aid;
+	public String getAerid() {
+		return aerid;
 	}
 
-	public void setAid(String aid) {
-		this.aid = aid;
+	public void setAerid(String aid) {
+		this.aerid = aid;
+	}
+
+	public String getQerid() {
+		return qerid;
+	}
+
+	public void setQerid(String qerid) {
+		this.qerid = qerid;
 	}
 
 	public String getAcontent() {
@@ -90,12 +104,12 @@ public class Qna implements Serializable
 		this.adate = adate;
 	}
 	
-	public int getTurnaroundTime() {
-		return turnaroundTime;
+	public int getRtime() {
+		return rtime;
 	}
 
-	public void setTurnaroundTime(int turnaroundTime) {
-		this.turnaroundTime = turnaroundTime;
+	public void setRtime(int turnaroundTime) {
+		this.rtime = turnaroundTime;
 	}
 
 	public boolean isAnswer() {
