@@ -4,8 +4,8 @@ import java.util.List;
 
 import net.dahae.april.model.BoardBaseEntity;
 
-public class Question extends BoardBaseEntity
-{
+public class Question extends BoardBaseEntity {
+	
 	private static final long serialVersionUID = 8182320036737210644L;
 	
 	/**
