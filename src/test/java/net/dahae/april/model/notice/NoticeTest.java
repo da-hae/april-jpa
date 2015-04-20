@@ -1,7 +1,7 @@
 package net.dahae.april.model.notice;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 import java.util.List;
 
@@ -9,8 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-
-import net.dahae.april.model.notice.Notice;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,15 +37,27 @@ public class NoticeTest {
 		notice.setContent("내용");
 	}
 
+//	@Test
+//	@Rollback(value = false)
+//	public void testPersist() throws Exception {
+//		em.persist(notice);
+//		
+//		Query query = em.createQuery("select n from Notice n");
+//		List<Notice> Notices = (List<Notice>)query.getResultList();
+//		
+//		assertThat(Notices.size(), is(1));
+//	}
+	
 	@Test
 	@Rollback(value = false)
-	public void testPersist() throws Exception {
+	public void testPersistEquals() throws Exception {
+		
 		em.persist(notice);
 		
 		Query query = em.createQuery("select n from Notice n");
-		List<Notice> Notices = (List<Notice>)query.getResultList();
+		Notice iNotice = (Notice) query.getSingleResult();
 		
-		assertThat(Notices.size(), is(1));
+		assertSame(notice , iNotice);
 	}
 	
 }
