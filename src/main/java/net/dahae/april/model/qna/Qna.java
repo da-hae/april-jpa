@@ -1,4 +1,4 @@
-package board.qna.domain;
+package net.dahae.april.model.qna;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,8 +1,8 @@
-package board.qna.domain;
+package net.dahae.april.model.qna;
 
 import java.util.List;
 
-import board.domain.BoardBaseEntity;
+import net.dahae.april.model.BoardBaseEntity;
 
 public class Question extends BoardBaseEntity
 {

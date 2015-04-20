@@ -1,13 +1,18 @@
-package board.notice.domain;
+package net.dahae.april.model.notice;
 
-import board.domain.BoardBaseEntity;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import net.dahae.april.model.BoardBaseEntity;
+
+@Entity
 public class Notice extends BoardBaseEntity
 {
 	private static final long serialVersionUID = -5297636336544431765L;
-
+	
 	/**
-	 * 제목 (title>
+	 * 제목 (title0
 	 */
 	private String title;
 	
@@ -44,4 +49,5 @@ public class Notice extends BoardBaseEntity
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
+
 }

@@ -1,14 +1,21 @@
-package board.domain;
+package net.dahae.april.model;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class BoardBaseEntity implements Serializable
 {
 	/**
-	 * 번호 (sequence)
+	 * ID (I)
 	 */
-	private int seq;
+	@Id
+	@GeneratedValue
+	private int id;
 	
 	/**
 	 * 등록 일시 (register date)
@@ -40,12 +47,12 @@ public class BoardBaseEntity implements Serializable
 	 */
 	private String mernm;
 	
-	public int getSeq() {
-		return seq;
+	public int getId() {
+		return id;
 	}
 
-	public void setSeq(int seq) {
-		this.seq = seq;
+	public void setId(int seq) {
+		this.id = seq;
 	}
 
 	public Date getRdate() {
