@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -24,6 +25,7 @@
 			text-align: center;
 		}
 	</style>
+	
 	
 </head>
 
@@ -98,79 +100,25 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="text-center">1</td>
-							<td class="text-center">
-								<a href="/april-jpa/html/notice/notice_view.html" />
-								공지사항 테스트1
-							</td>
-							<td class="text-center">0</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-14</td>
-						</tr>
-						<tr>
-							<td class="text-center">2</td>
-							<td class="text-center">공지사항 테스트2</td>
-							<td class="text-center">0</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-14</td>
-						</tr>
-						<tr>
-							<td class="text-center">3</td>
-							<td class="text-center">공지사항 테스트3</td>
-							<td class="text-center">0</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-14</td>
-						</tr>
-						<tr>
-							<td class="text-center">4</td>
-							<td class="text-center">공지사항 테스트 4</td>
-							<td class="text-center">0</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-14</td>
-						</tr>
-						<tr>
-							<td class="text-center">5</td>
-							<td class="text-center">공지사항 내용 변경</td>
-							<td class="text-center">0</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-14</td>
-						</tr>
-						<tr>
-							<td class="text-center">6</td>
-							<td class="text-center">2015.04.14 공지사항</td>
-							<td class="text-center">0</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-14</td>
-						</tr>
-						<tr>
-							<td class="text-center">7</td>
-							<td class="text-center">게시판 참고사항</td>
-							<td class="text-center">1</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-14</td>
-						</tr>
-						<tr>
-							<td class="text-center">8</td>
-							<td class="text-center">HompPage Open</td>
-							<td class="text-center">0</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-10</td>
-						</tr>
-						<tr>
-							<td class="text-center">9</td>
-							<td class="text-center">오픈 관련 공지사항[필독]</td>
-							<td class="text-center">2</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-10</td>
-						</tr>
-						<tr>
-							<td class="text-center">10</td>
-							<td class="text-center">오픈 완료</td>
-							<td class="text-center">4</td>
-							<td class="text-center">관리자</td>
-							<td class="text-center">2015-04-09</td>
-						</tr>
+						<c:if test="${empty noticeList}">
+							<tr>
+								<td class="text-center" colspan="5">공지사항이 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${!empty noticeList}">
+							<c:forEach items="${noticeList}" var="notice">
+								<tr>
+									<td class="text-center">${notice.id}</td>
+									<td class="text-center">
+										<a href="/april-jpa/html/notice/notice_view.html" />
+										${notice.title}
+									</td>
+									<td class="text-center">${notice.hits}</td>
+									<td class="text-center">${notice.rernm}</td>
+									<td class="text-center">${notice.rdate}</td>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</tbody>
 				</table>
 			</div>

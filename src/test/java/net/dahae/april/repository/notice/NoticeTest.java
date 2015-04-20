@@ -23,7 +23,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ContextConfiguration(locations = {"classpath:spring/business-config.xml"})
-//@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ActiveProfiles("jpa")
 public class NoticeTest {
@@ -34,7 +34,7 @@ public class NoticeTest {
 	Notice notice;
 	
 	@Autowired
-	NoticeRepository jpaNoticeRepositoryImpl;
+	NoticeRepository noticeRepository;
 	
 	@Before
 	public void init() {
@@ -45,13 +45,13 @@ public class NoticeTest {
 		notice.setRernm("홍길동");
 	}
 	
-//	@Test
+	@Test
 	public void testFindByTitle() throws Exception {
 		
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		List<Notice> result = jpaNoticeRepositoryImpl.findByTitle("제목");
-		List<Notice> nullResult = jpaNoticeRepositoryImpl.findByTitle("제목없음");
+		List<Notice> result = noticeRepository.findByTitle("제목");
+		List<Notice> nullResult = noticeRepository.findByTitle("제목없음");
 		
 		assertThat(result.size(),is(1));
 		assertThat(nullResult.size(),is(0));
@@ -60,10 +60,10 @@ public class NoticeTest {
 //	@Test
 	public void testFindByContent() throws Exception {
 		
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		List<Notice> result = jpaNoticeRepositoryImpl.findByContent("내용");
-		List<Notice> nullResult = jpaNoticeRepositoryImpl.findByContent("내용없음");
+		List<Notice> result = noticeRepository.findByContent("내용");
+		List<Notice> nullResult = noticeRepository.findByContent("내용없음");
 		
 		assertThat(result.size(),is(1));
 		assertThat(nullResult.size(),is(0));
@@ -72,10 +72,10 @@ public class NoticeTest {
 //	@Test
 	public void testFindByRernm() throws Exception {
 		
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		List<Notice> result = jpaNoticeRepositoryImpl.findByRernm("홍길동");
-		List<Notice> nullResult = jpaNoticeRepositoryImpl.findByRernm("산적");
+		List<Notice> result = noticeRepository.findByRernm("홍길동");
+		List<Notice> nullResult = noticeRepository.findByRernm("산적");
 		
 		assertThat(result.size(),is(1));
 		assertThat(nullResult.size(),is(0));
@@ -84,16 +84,16 @@ public class NoticeTest {
 //	@Test
 	public void testFindAll() throws Exception {
 		
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		List<Notice> result = jpaNoticeRepositoryImpl.findAll();
+		List<Notice> result = noticeRepository.findAll();
 		
 		assertThat(result.size(),is(1));
 		
 		init();
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		result = jpaNoticeRepositoryImpl.findAll();
+		result = noticeRepository.findAll();
 		
 		assertThat(result.size(),is(2));
 	}
@@ -101,20 +101,20 @@ public class NoticeTest {
 //	@Test
 	public void testFindById() throws Exception {
 		
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		List<Notice> resultList = jpaNoticeRepositoryImpl.findAll();
+		List<Notice> resultList = noticeRepository.findAll();
 		
 		assertThat(resultList.size(),is(1));
 		
 		init();
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		Notice result = jpaNoticeRepositoryImpl.findById(notice.getId());
+		Notice result = noticeRepository.findById(notice.getId());
 		
 		assertEquals(result.getId(), notice.getId());
 		
-		resultList = jpaNoticeRepositoryImpl.findAll();
+		resultList = noticeRepository.findAll();
 		
 		assertThat(resultList.size(),is(2));
 	}
@@ -122,9 +122,9 @@ public class NoticeTest {
 //	@Test
 	public void testSave() throws Exception {
 		
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		Notice result = jpaNoticeRepositoryImpl.findById(notice.getId());
+		Notice result = noticeRepository.findById(notice.getId());
 		
 		assertEquals(result.getId(), notice.getId());
 		assertSame(result, notice);
@@ -133,15 +133,15 @@ public class NoticeTest {
 //	@Test
 	public void testDelete() throws Exception {
 		
-		jpaNoticeRepositoryImpl.save(notice);
+		noticeRepository.save(notice);
 		
-		List<Notice> result = jpaNoticeRepositoryImpl.findAll();
+		List<Notice> result = noticeRepository.findAll();
 		
 		assertThat(result.size(),is(1));
 		
-		jpaNoticeRepositoryImpl.delete(notice);
+		noticeRepository.delete(notice);
 		
-		result = jpaNoticeRepositoryImpl.findAll();
+		result = noticeRepository.findAll();
 		
 		assertThat(result.size(),is(0));
 	}
