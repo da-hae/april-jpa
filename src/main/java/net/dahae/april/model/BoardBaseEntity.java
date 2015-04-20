@@ -8,8 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BoardBaseEntity implements Serializable
-{
+public class BoardBaseEntity implements Serializable {
 	/**
 	 * ID (I)
 	 */

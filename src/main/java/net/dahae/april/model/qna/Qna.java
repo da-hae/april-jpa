@@ -3,10 +3,10 @@ package net.dahae.april.model.qna;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Qna implements Serializable
-{
+public class Qna implements Serializable {
+	
 	private static final long serialVersionUID = 6277759750586353968L;
-
+	
 	/**
 	 * 번호
 	 */

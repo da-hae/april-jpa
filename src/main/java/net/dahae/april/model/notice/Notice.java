@@ -1,14 +1,12 @@
 package net.dahae.april.model.notice;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 import net.dahae.april.model.BoardBaseEntity;
 
 @Entity
-public class Notice extends BoardBaseEntity
-{
+public class Notice extends BoardBaseEntity {
+	
 	private static final long serialVersionUID = -5297636336544431765L;
 	
 	/**
