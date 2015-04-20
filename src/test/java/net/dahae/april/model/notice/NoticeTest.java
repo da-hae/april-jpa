@@ -1,4 +1,4 @@
-package net.dahae.april.notice;
+package net.dahae.april.model.notice;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -34,6 +34,7 @@ public class NoticeTest {
 	@Before
 	public void init() {
 		notice = new Notice();
+		
 		notice.setTitle("제목");
 		notice.setContent("내용");
 	}
