@@ -44,7 +44,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id").getResultList();
 	}
 
-	public Notice findById(int id) throws DataAccessException {
+	public Notice findById(Long id) throws DataAccessException {
 		
 		/**
 		 * example 1
@@ -60,7 +60,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	}
 
 	public void save(Notice notice) throws DataAccessException {
-		if (notice.getId() == 0) {
+		if (notice.getId() == null) {
     		this.em.persist(notice);     		
     	}
     	else {

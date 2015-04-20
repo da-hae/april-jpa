@@ -47,5 +47,4 @@ public class Notice extends BoardBaseEntity {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-
 }

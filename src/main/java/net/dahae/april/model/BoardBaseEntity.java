@@ -14,7 +14,7 @@ public class BoardBaseEntity extends BaseEntity implements Serializable {
 	 */
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	/**
 	 * 등록 일시 (register date)
@@ -46,12 +46,8 @@ public class BoardBaseEntity extends BaseEntity implements Serializable {
 	 */
 	private String mernm;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
-	}
-
-	public void setId(int seq) {
-		this.id = seq;
 	}
 
 	public Date getRdate() {

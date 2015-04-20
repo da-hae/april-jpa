@@ -2,6 +2,7 @@ package net.dahae.april.repository;
 
 import java.util.List;
 
+import net.dahae.april.model.BaseEntity;
 import net.dahae.april.model.notice.Notice;
 
 import org.springframework.dao.DataAccessException;
@@ -54,7 +55,7 @@ public interface NoticeRepository {
 	 * @throws org.springframework.dao.DataRetrievalFailureException
 	 *		  if not found
 	 */
-	Notice findById(int id) throws DataAccessException;
+	Notice findById(Long id) throws DataAccessException;
 	
 	/**
 	 * Save a <code>Notice</code> to the data store, either inserting or updating it.
