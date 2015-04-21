@@ -12,21 +12,11 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	
+	<!-- Dahae Custom theme -->
+	<link rel="stylesheet" href="/april-jpa/resources/css/dh-homepage.css">
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="/april-jpa/webjars/jquery/2.1.3/jquery.min.js"></script>
-	
-	<style type="text/css">
-		body {
-			padding-top: 50px;
-		}
-		
-		.starter-template {
-			padding: 40px 15px;
-			text-align: center;
-		}
-	</style>
-	
-	
 </head>
 
 <body>
