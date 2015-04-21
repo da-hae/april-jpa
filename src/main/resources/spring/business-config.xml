@@ -83,7 +83,7 @@
 			<constructor-arg ref="dataSource"/>
 		</bean>
 
-		<context:component-scan base-package="net.dahae.april.repository.jpa"/>
+		<context:component-scan base-package="net.dahae.april.repository.jdbc"/>
 	</beans>
 
 	<beans profile="jpa">
