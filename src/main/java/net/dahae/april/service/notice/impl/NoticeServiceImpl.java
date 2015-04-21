@@ -26,4 +26,7 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeRepository.findAll();
 	}
 
+	public List<Notice> findAllByPaging(Integer page) throws DataAccessException {
+		return noticeRepository.findAllByPaging(page);
+	}
 }

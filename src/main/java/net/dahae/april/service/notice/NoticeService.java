@@ -2,9 +2,9 @@ package net.dahae.april.service.notice;
 
 import java.util.List;
 
-import org.springframework.dao.DataAccessException;
-
 import net.dahae.april.model.notice.Notice;
+
+import org.springframework.dao.DataAccessException;
 
 /**
  * @author kyd
@@ -12,4 +12,6 @@ import net.dahae.april.model.notice.Notice;
 public interface NoticeService {
 	
 	List<Notice> findAll() throws DataAccessException;
+	
+	List<Notice> findAllByPaging(Integer page) throws DataAccessException;
 }

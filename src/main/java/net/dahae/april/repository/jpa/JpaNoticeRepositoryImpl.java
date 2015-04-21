@@ -2,7 +2,6 @@ package net.dahae.april.repository.jpa;
 
 import java.util.List;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -48,6 +47,15 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	public List<Notice> findAll() throws DataAccessException {
 		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id").getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Notice> findAllByPaging(Integer page) throws DataAccessException {
+		
+		int size = 10;
+		int index = (page==null) ? 0 : (page-1) * size;
+		
+		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id").setFirstResult(index).setMaxResults(size).getResultList();
+	}
 
 	public Notice findById(Long id) throws DataAccessException {
 		
@@ -76,5 +84,4 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	public void delete(Notice notice) throws DataAccessException {
 		this.em.remove(notice);
 	}
-
 }

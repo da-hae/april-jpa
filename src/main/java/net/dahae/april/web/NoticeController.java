@@ -1,5 +1,6 @@
 package net.dahae.april.web;
 
+import net.dahae.april.model.BoardPaging;
 import net.dahae.april.service.notice.NoticeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/notice")
@@ -16,9 +18,11 @@ public class NoticeController {
 	NoticeService noticeService;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String initCreationForm(Model model) {
+	public String initCreationForm(@RequestParam(defaultValue="1" ,required=false) Integer page,
+			Model model) {
 		
-		model.addAttribute("noticeList" , noticeService.findAll());
+		model.addAttribute("noticePaging" , new BoardPaging(page, noticeService.findAll().size()) );
+		model.addAttribute("noticeList"   , noticeService.findAllByPaging(page)                   );
 		
 		return "notice/notice_list";
 	}

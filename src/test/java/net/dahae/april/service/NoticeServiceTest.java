@@ -1,10 +1,12 @@
 package net.dahae.april.service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import net.dahae.april.model.notice.Notice;
@@ -30,12 +32,20 @@ public class NoticeServiceTest {
 	@Autowired
 	NoticeService noticeService;
 	
+	@PersistenceContext
+	EntityManager em;
+	
 	@Test
 	public void testFindAll() throws Exception {
 		
 		List<Notice> noticeList = noticeService.findAll();
 		
 		assertThat(noticeList.size(),is(0));
+	}
+	
+	@Test
+	public void testPaging() throws Exception {
+		
 	}
 	
 }

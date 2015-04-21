@@ -126,22 +126,28 @@
 				<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/html/notice/notice_form.html';">글쓰기</button>
 			</p>
 			<ul class="pagination">
-				<li>
-					<a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">7</a></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li><a href="#">10</a></li>
-				<li>
-					<a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-				</li>
+				<c:if test="${noticePaging.page > 1}">
+					<li>
+						<a href="<c:url value='/notice/list?page=${noticePaging.firstPage}'/>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+					</li>
+				</c:if>
+				<c:forEach var="i" begin="${noticePaging.startPage}" end="${noticePaging.endPage}" step="1">
+					<li>
+						<c:choose>
+							<c:when test="${i eq noticePaging.page}">
+								<a href="<c:url value='/notice/list?page=${i+1}'/>" class="active">${i+1}</a>
+							</c:when>
+							<c:otherwise>
+								<a href="<c:url value='/notice/list?page=${i+1}'/>">${i+1}</a>
+							</c:otherwise>
+						</c:choose>
+					</li>
+				</c:forEach>
+				<c:if test="${noticePaging.page < noticePaging.totalCount-1}">
+					<li>
+						<a href="<c:url value='/notice/list?page=${noticePaging.nextPage}'/>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 	</div>
