@@ -89,7 +89,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">공지사항 목록</div>
 				<!-- Table -->
-				<table class="table table-striped table-hover">
+				<table id="notice-list" class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th class="text-center">번호</th>
@@ -107,12 +107,9 @@
 						</c:if>
 						<c:if test="${!empty noticeList}">
 							<c:forEach items="${noticeList}" var="notice">
-								<tr>
+								<tr data-notice-key="<c:url value='/html/notice/notice_view.html'/>" >
 									<td class="text-center">${notice.id}</td>
-									<td class="text-center">
-										<a href="/april-jpa/html/notice/notice_view.html" />
-										${notice.title}
-									</td>
+									<td class="text-center">${notice.title}</td>
 									<td class="text-center">${notice.hits}</td>
 									<td class="text-center">${notice.rernm}</td>
 									<td class="text-center">${notice.rdate}</td>
@@ -154,6 +151,14 @@
 		</div>
 	</div>
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="/april-jpa/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>		
+	<script src="/april-jpa/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#notice-list tbody tr').on('click', function(){
+				location.href = $(this).attr("data-notice-key");
+			});
+		});
+	</script>
 </body>
 </html>
