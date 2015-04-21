@@ -3,6 +3,8 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
 	<title>april-jpa</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -51,7 +53,7 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div class="container">	
+	<div class="container-fluid">	
 		<div class="starter-template">
 			<h1>안녕하세요</h1>
 			<p class="lead">

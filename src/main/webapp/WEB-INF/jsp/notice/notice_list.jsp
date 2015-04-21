@@ -5,6 +5,8 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
 	<title>april-jpa</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -52,7 +54,7 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="starter-template">
 			<h1>안녕하세요</h1>
 			<p class="lead">
@@ -115,26 +117,26 @@
 			<ul class="pagination">
 				<c:if test="${noticePaging.startPage < noticePaging.page}">
 					<li>
-						<a href="<c:url value='/notice/list?page=${noticePaging.firstPage}'/>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+						<a href="<c:url value='/notice/list.html?page=${noticePaging.firstPage}'/>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
 					</li>
 				</c:if>
 				<c:forEach var="i" begin="${noticePaging.startPage}" end="${noticePaging.endPage}" step="1">
 					<c:choose>
 						<c:when test="${i eq noticePaging.page}">
 							<li class="active">
-								<a href="<c:url value='/notice/list?page=${i}'/>">${i}</a>
+								<a href="<c:url value='/notice/list.html?page=${i}'/>">${i}</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li>
-								<a href="<c:url value='/notice/list?page=${i}'/>">${i}</a>
+								<a href="<c:url value='/notice/list.html?page=${i}'/>">${i}</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${noticePaging.page < noticePaging.endPage}">
 					<li>
-						<a href="<c:url value='/notice/list?page=${noticePaging.nextPage}'/>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+						<a href="<c:url value='/notice/list.html?page=${noticePaging.nextPage}'/>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 					</li>
 				</c:if>
 			</ul>

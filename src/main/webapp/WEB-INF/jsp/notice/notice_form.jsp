@@ -4,6 +4,8 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
 	<title>april-jpa</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -52,7 +54,7 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="panel panel-default">
 			<div class="panel-heading">공지사항 등록/수정</div>
 			<div class="panel-body">
