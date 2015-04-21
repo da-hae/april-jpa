@@ -2,6 +2,7 @@ package net.dahae.april.repository.jpa;
 
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -12,6 +13,10 @@ import net.dahae.april.repository.NoticeRepository;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+/**
+ * 
+ * @author yongdae
+ */
 @Service
 public class JpaNoticeRepositoryImpl implements NoticeRepository {
 

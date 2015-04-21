@@ -1,6 +1,7 @@
 package net.dahae.april.repository.notice;
 
 import static org.hamcrest.CoreMatchers.is;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
@@ -22,11 +23,15 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * 
+ * @author yongdae
+ */
 @ContextConfiguration(locations = {"classpath:spring/business-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ActiveProfiles("jpa")
-public class NoticeTest {
+public class NoticeRepositoryTest {
 
 	@PersistenceContext
 	EntityManager em;
@@ -57,7 +62,7 @@ public class NoticeTest {
 		assertThat(nullResult.size(),is(0));
 	}
 	
-//	@Test
+	@Test
 	public void testFindByContent() throws Exception {
 		
 		noticeRepository.save(notice);
@@ -69,7 +74,7 @@ public class NoticeTest {
 		assertThat(nullResult.size(),is(0));
 	}
 	
-//	@Test
+	@Test
 	public void testFindByRernm() throws Exception {
 		
 		noticeRepository.save(notice);
@@ -81,7 +86,7 @@ public class NoticeTest {
 		assertThat(nullResult.size(),is(0));
 	}
 	
-//	@Test
+	@Test
 	public void testFindAll() throws Exception {
 		
 		noticeRepository.save(notice);
@@ -98,7 +103,7 @@ public class NoticeTest {
 		assertThat(result.size(),is(2));
 	}
 	
-//	@Test
+	@Test
 	public void testFindById() throws Exception {
 		
 		noticeRepository.save(notice);
@@ -119,7 +124,7 @@ public class NoticeTest {
 		assertThat(resultList.size(),is(2));
 	}
 	
-//	@Test
+	@Test
 	public void testSave() throws Exception {
 		
 		noticeRepository.save(notice);
@@ -130,7 +135,7 @@ public class NoticeTest {
 		assertSame(result, notice);
 	}
 	
-//	@Test
+	@Test
 	public void testDelete() throws Exception {
 		
 		noticeRepository.save(notice);

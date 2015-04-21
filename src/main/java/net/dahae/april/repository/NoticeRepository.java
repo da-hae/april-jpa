@@ -7,6 +7,10 @@ import net.dahae.april.model.notice.Notice;
 
 import org.springframework.dao.DataAccessException;
 
+/**
+ * 
+ * @author yongdae
+ */
 public interface NoticeRepository {
 	
 	/**

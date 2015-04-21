@@ -1,9 +1,6 @@
 package net.dahae.april.model.notice;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
-
-import java.util.List;
+import static org.junit.Assert.assertSame;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,16 +10,18 @@ import javax.transaction.Transactional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
+/**
+ * 
+ * @author yongdae
+ */
 @ContextConfiguration(locations = {"classpath:spring/business-config.xml"})
-//@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ActiveProfiles("jpa")
-public class NoticeTest {
+public class NoticeModelTest {
 
 	@PersistenceContext
 	EntityManager em;
@@ -48,8 +47,7 @@ public class NoticeTest {
 //		assertThat(Notices.size(), is(1));
 //	}
 	
-//	@Test
-	@Rollback(value = false)
+	@Test
 	public void testPersistEquals() throws Exception {
 		
 		em.persist(notice);
