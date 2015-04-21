@@ -181,4 +181,8 @@ public class BoardPaging extends BaseEntity{
 
 		this.setFinalPage(finalPage); // 마지막 페이지
 	}
+	
+	public static int getPageFirstResult(Integer page) {
+		return (page==null) ? 0 : (page-1) * PAGE_SIZE;
+	}
 }

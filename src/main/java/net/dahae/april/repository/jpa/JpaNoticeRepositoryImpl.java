@@ -25,21 +25,21 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	
 	@SuppressWarnings("unchecked")
 	public List<Notice> findByTitle(String title) throws DataAccessException {
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title= :title");
-		query.setParameter("title", title);
+		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title");
+		query.setParameter("title", "%"+title+"%");
 		return query.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Notice> findByContent(String content) throws DataAccessException {
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.content= :content");
-		query.setParameter("content", content);
+		Query query = this.em.createQuery("SELECT n FROM Notice n where n.content like :content");
+		query.setParameter("content", "%"+content+"%");
 		return query.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Notice> findByRernm(String rernm) throws DataAccessException {
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.rernm= :rernm");
+		Query query = this.em.createQuery("SELECT n FROM Notice n where n.rernm = :rernm");
 		query.setParameter("rernm", rernm);
 		return query.getResultList();
 	}
@@ -50,13 +50,15 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Notice> findAllByPaging(Integer page) throws DataAccessException {
+	public List<Notice> findByPaging(String title, Integer page) throws DataAccessException {
 		
-		int index = (page==null) ? 0 : (page-1) * BoardPaging.PAGE_SIZE;
+		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title");
+		query.setParameter("title", "%"+title+"%");
+		query.setFirstResult(BoardPaging.getPageFirstResult(page)).setMaxResults(BoardPaging.PAGE_SIZE);
 		
-		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id").setFirstResult(index).setMaxResults(BoardPaging.PAGE_SIZE).getResultList();
+		return query.getResultList();
 	}
-
+	
 	public Notice findById(Long id) throws DataAccessException {
 		
 		/**

@@ -52,12 +52,10 @@ public interface NoticeRepository {
 	List<Notice> findAll() throws DataAccessException;
 	
 	/**
-	 * Retrieve all <code>Notice</code>s from the data store.
-	 * 
 	 * @return a <code>List</code> of <code>Notice</code>s
 	 * @throws DataAccessException
 	 */
-	List<Notice> findAllByPaging(Integer page) throws DataAccessException;
+	List<Notice> findByPaging(String title, Integer page) throws DataAccessException;
 	
 	/**
 	 * Retrieve a <code>Notice</code> from the data store by id.

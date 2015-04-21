@@ -22,11 +22,11 @@ public class NoticeServiceImpl implements NoticeService{
 	
 //	@Override
 	@Transactional
-	public List<Notice> findAll() throws DataAccessException {
-		return noticeRepository.findAll();
+	public List<Notice> find(String title) throws DataAccessException {
+		return noticeRepository.findByTitle(title);
 	}
 
-	public List<Notice> findAllByPaging(Integer page) throws DataAccessException {
-		return noticeRepository.findAllByPaging(page);
+	public List<Notice> findByPaging(String title, Integer page) throws DataAccessException {
+		return noticeRepository.findByPaging(title, page);
 	}
 }

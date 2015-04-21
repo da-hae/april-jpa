@@ -11,7 +11,7 @@ import org.springframework.dao.DataAccessException;
  */
 public interface NoticeService {
 	
-	List<Notice> findAll() throws DataAccessException;
+	List<Notice> find(String title) throws DataAccessException;
 	
-	List<Notice> findAllByPaging(Integer page) throws DataAccessException;
+	List<Notice> findByPaging(String title, Integer page) throws DataAccessException;
 }

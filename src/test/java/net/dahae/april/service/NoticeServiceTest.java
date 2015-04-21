@@ -38,9 +38,6 @@ public class NoticeServiceTest {
 	@Test
 	public void testFindAll() throws Exception {
 		
-		List<Notice> noticeList = noticeService.findAll();
-		
-		assertThat(noticeList.size(),is(0));
 	}
 	
 	@Test
