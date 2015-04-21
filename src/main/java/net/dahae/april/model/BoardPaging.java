@@ -9,39 +9,25 @@ public class BoardPaging extends BaseEntity{
 	
 	private static final long serialVersionUID = 3887508115636688661L;
 	
-	private int pageSize; // 게시 글 수
-	private int firstPage; // 첫 번째 페이지 번호
-	private int prevPage; // 이전 페이지 번호
-	private int startPage; // 시작 페이지 (페이징 네비 기준)
-	private int page; // 페이지 번호
-	private int endPage; // 끝 페이지 (페이징 네비 기준)
-	private int nextPage; // 다음 페이지 번호
-	private int finalPage; // 마지막 페이지 번호
-	private int totalCount; // 게시 글 전체 수
+	public static final int PAGE_SIZE = 10; // 게시 글 수
+	private int firstPage             = 1;  // 첫 번째 페이지 
+	private int prevPage              = 0;  // 이전 페이지 
+	private int startPage             = 1;  // 시작 페이지 (페이징 네비 기준)
+	private int endPage               = 1;  // 끝 페이지 (페이징 네비 기준)
+	private int nextPage              = 2;  // 다음 페이지 
+	private int finalPage             = 1;  // 마지막 페이지 
+	
+	private int page;                       // 페이지 
+	private int totalCount;                 // 게시 글 전체 수
 	
 	public BoardPaging(){}
 	
 	public BoardPaging(int page, int totalCount){
 		this.page = page;
 		this.totalCount = totalCount;
-		this.setPageSize(10);
 		this.makePaging();
 	}
 	
-	/**
-	 * @return the pageSize
-	 */
-	public int getPageSize() {
-		return pageSize;
-	}
-
-	/**
-	 * @param pageSize the pageSize to set
-	 */
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
 	/**
 	 * @return the firstPage
 	 */
@@ -155,14 +141,13 @@ public class BoardPaging extends BaseEntity{
 	}
 
 	/**
-	 * 페이징 생성
+	 * make paging
 	 */
 	private void makePaging() {
 		if (this.totalCount == 0) return; // 게시 글 전체 수가 없는 경우
 		if (this.page == 0) this.setPage(1); // 기본 값 설정
-		if (this.pageSize == 0) this.setPageSize(10); // 기본 값 설정
 
-		int finalPage = (totalCount + (pageSize - 1)) / pageSize; // 마지막 페이지
+		int finalPage = (totalCount + (PAGE_SIZE - 1)) / PAGE_SIZE; // 마지막 페이지
 		if (this.page > finalPage) this.setPage(finalPage); // 기본 값 설정
 
 		if (this.page < 0 || this.page > finalPage) this.page = 1; // 현재 페이지 유효성 체크
@@ -177,23 +162,23 @@ public class BoardPaging extends BaseEntity{
 			endPage = finalPage;
 		}
 
-		this.setFirstPage(1); // 첫 번째 페이지 번호
+		this.setFirstPage(1); // 첫 번째 페이지 
 
 		if (isNowFirst) {
-			this.setPrevPage(1); // 이전 페이지 번호
+			this.setPrevPage(1); // 이전 페이지 
 		} else {
-			this.setPrevPage(((page - 1) < 1 ? 1 : (page - 1))); // 이전 페이지 번호
+			this.setPrevPage(((page - 1) < 1 ? 1 : (page - 1))); // 이전 페이지 
 		}
 
 		this.setStartPage(startPage); // 시작 페이지 (페이징 네비 기준)
 		this.setEndPage(endPage); // 끝 페이지 (페이징 네비 기준)
 
 		if (isNowFinal) {
-			this.setNextPage(finalPage); // 다음 페이지 번호
+			this.setNextPage(finalPage); // 다음 페이지 
 		} else {
-			this.setNextPage(((page + 1) > finalPage ? finalPage : (page + 1))); // 다음 페이지 번호
+			this.setNextPage(((page + 1) > finalPage ? finalPage : (page + 1))); // 다음 페이지 
 		}
 
-		this.setFinalPage(finalPage); // 마지막 페이지 번호
+		this.setFinalPage(finalPage); // 마지막 페이지
 	}
 }

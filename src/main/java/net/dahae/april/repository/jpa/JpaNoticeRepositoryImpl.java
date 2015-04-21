@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import net.dahae.april.model.BoardPaging;
 import net.dahae.april.model.notice.Notice;
 import net.dahae.april.repository.NoticeRepository;
 
@@ -51,10 +52,9 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	@SuppressWarnings("unchecked")
 	public List<Notice> findAllByPaging(Integer page) throws DataAccessException {
 		
-		int size = 10;
-		int index = (page==null) ? 0 : (page-1) * size;
+		int index = (page==null) ? 0 : (page-1) * BoardPaging.PAGE_SIZE;
 		
-		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id").setFirstResult(index).setMaxResults(size).getResultList();
+		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id").setFirstResult(index).setMaxResults(BoardPaging.PAGE_SIZE).getResultList();
 	}
 
 	public Notice findById(Long id) throws DataAccessException {
