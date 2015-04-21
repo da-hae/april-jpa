@@ -24,6 +24,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	EntityManager em;
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Notice> findByTitle(String title) throws DataAccessException {
 		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title");
 		query.setParameter("title", "%"+title+"%");
@@ -31,6 +32,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Notice> findByContent(String content) throws DataAccessException {
 		Query query = this.em.createQuery("SELECT n FROM Notice n where n.content like :content");
 		query.setParameter("content", "%"+content+"%");
@@ -38,6 +40,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Notice> findByRernm(String rernm) throws DataAccessException {
 		Query query = this.em.createQuery("SELECT n FROM Notice n where n.rernm = :rernm");
 		query.setParameter("rernm", rernm);
@@ -45,11 +48,13 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Notice> findAll() throws DataAccessException {
 		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Notice> findByPaging(String title, Integer page) throws DataAccessException {
 		
 		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title");
@@ -59,6 +64,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 		return query.getResultList();
 	}
 	
+	@Override
 	public Notice findById(Long id) throws DataAccessException {
 		
 		/**
@@ -73,16 +79,18 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 		 */
 		return this.em.find(Notice.class, id);
 	}
-
+	
+	@Override
 	public void save(Notice notice) throws DataAccessException {
 		if (notice.getId() == null) {
-    		this.em.persist(notice);     		
-    	}
-    	else {
-    		this.em.merge(notice);    
-    	}
+			this.em.persist(notice);     		
+		}
+		else {
+			this.em.merge(notice);    
+		}
 	}
-
+	
+	@Override
 	public void delete(Notice notice) throws DataAccessException {
 		this.em.remove(notice);
 	}

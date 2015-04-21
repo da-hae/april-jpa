@@ -68,7 +68,7 @@
 			<p class="lead">
 				간단한 게시판을 만들어보기 위해 작성된 페이지 입니다
 			</p>
-			<form method="get" action="<c:url value='/notice/list' />" role="form">
+			<form method="get" action="<c:url value='/notice/list.html' />" role="form">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

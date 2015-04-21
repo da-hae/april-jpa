@@ -17,14 +17,14 @@ public class NoticeController {
 	@Autowired
 	NoticeService noticeService;
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public String initCreationForm(
 			@RequestParam(defaultValue="1" ,required=false) Integer page,
 			@RequestParam(defaultValue="" ,required=false) String title,
 			Model model) {
 		
-		model.addAttribute("noticePaging" , new BoardPaging(page, noticeService.find(title).size()) );
-		model.addAttribute("noticeList"   , noticeService.findByPaging(title, page)                 );
+		model.addAttribute("noticePaging" , new BoardPaging(page, noticeService.find(title).size()));
+		model.addAttribute("noticeList"   , noticeService.findByPaging(title, page)                );
 		
 		return "notice/notice_list";
 	}
