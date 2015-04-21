@@ -68,7 +68,7 @@
 			<p class="lead">
 				간단한 게시판을 만들어보기 위해 작성된 페이지 입니다
 			</p>
-			<form role="form">
+			<form method="get" action="<c:url value='/notice/list' />" role="form">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -80,9 +80,9 @@
 							<li><a href="#writer">작성자</a></li>
 						</ul>
 					</div>
-					<input type="text" class="form-control" name="x" placeholder="검색">
+					<input id="title" name="title" type="text" class="form-control" name="x" placeholder="검색">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button" >&nbsp;<span class="glyphicon glyphicon-search"/></button>
+						<button class="btn btn-default" type="submit" >&nbsp;<span class="glyphicon glyphicon-search"/></button>
 					</span>
 				</div>
 			</form>
