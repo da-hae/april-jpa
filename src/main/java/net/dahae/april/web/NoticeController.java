@@ -26,7 +26,7 @@ public class NoticeController {
 			@RequestParam(defaultValue="1" ,required=false) Integer page,
 			@RequestParam(defaultValue="" ,required=false) String title,
 			Model model) {
-		
+		a
 		model.addAttribute("noticePaging" , new BoardPaging(page, noticeService.find(title).size()));
 		model.addAttribute("noticeList"   , noticeService.findByPaging(title, page)                );
 		
