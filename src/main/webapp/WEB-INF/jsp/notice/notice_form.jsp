@@ -5,6 +5,8 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
 	<title>april-jpa</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -12,14 +14,12 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	
+	<!-- Dahae Custom theme -->
+	<link rel="stylesheet" href="/april-jpa/resources/css/dh-homepage.css">
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="/april-jpa/webjars/jquery/2.1.3/jquery.min.js"></script>
 	
-	<style type="text/css">
-		body {
-			padding-top: 100px;
-		}
-	</style>
 </head>
 
 <body>
@@ -55,36 +55,36 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<form:form method="POST" commandName="noticeForm" action="form" class="form-horizontal" role="form">
-		<div class="container">
-			<div class="panel panel-default">
-				<div class="panel-heading">공지사항 등록/수정</div>
-				<div class="panel-body">
-					
-						<div class="form-group">
-							<form:label class="control-label col-sm-2" path="title">제목:</form:label>
-							<div class="col-sm-10">
-								<form:input type="text" class="form-control" path="title" values="${notice.title}"/>
-							</div>
+	<form:form method="POST" commandName="noticeForm" action="list" class="form-horizontal" role="form">
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">공지사항 등록/수정</div>
+			<div class="panel-body">
+				
+					<div class="form-group">
+						<form:label class="control-label col-sm-2" path="title">제목:</form:label>
+						<div class="col-sm-10">
+							<form:input type="text" class="form-control" path="title" values="${notice.title}"/>
 						</div>
-						<div class="form-group">
-							<form:label class="control-label col-sm-2" path="content">내용:</form:label>
-							<div class="col-sm-10">
-								<form:textarea class="form-control" cols="100" rows="15" path="content" values="${notice.content}"/>
-							</div>
-						</div>
-					
-				</div>
-			</div>
-			<nav>
-				<ul class="pager">
-					<li class="previous"><a href="javascript:window.history.back();"><span aria-hidden="true">&larr;</span>&nbsp;뒤로가기</a></li>
-					<div class="text-right">
-						<form:button type="submit" class="btn btn-default">저장</form:button>&nbsp;
 					</div>
-				</ul>
-			</nav>
+					<div class="form-group">
+						<form:label class="control-label col-sm-2" path="content">내용:</form:label>
+						<div class="col-sm-10">
+							<form:textarea class="form-control" cols="100" rows="15" path="content" values="${notice.content}"/>
+						</div>
+					</div>
+				
+			</div>
 		</div>
+		<nav>
+			<ul class="pager">
+				<li class="previous"><a href="javascript:window.history.back();"><span aria-hidden="true">&larr;</span>&nbsp;뒤로가기</a></li>
+				<div class="text-right">
+					<form:button type="submit" class="btn btn-default">저장</form:button>&nbsp;
+				</div>
+			</ul>
+		</nav>
+	</div>
 	</form:form>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="/april-jpa/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>		

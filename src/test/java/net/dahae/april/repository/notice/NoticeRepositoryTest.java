@@ -18,7 +18,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -51,7 +50,6 @@ public class NoticeRepositoryTest {
 	}
 	
 	@Test
-	@Rollback
 	public void testFindByTitle() throws Exception {
 		
 		noticeRepository.save(notice);
@@ -63,7 +61,7 @@ public class NoticeRepositoryTest {
 		assertThat(nullResult.size(),is(0));
 	}
 	
-	/*@Test
+	@Test
 	public void testFindByContent() throws Exception {
 		
 		noticeRepository.save(notice);
@@ -123,7 +121,7 @@ public class NoticeRepositoryTest {
 		resultList = noticeRepository.findAll();
 		
 		assertThat(resultList.size(),is(2));
-	}*/
+	}
 	
 	@Test
 	public void testSave() throws Exception {
@@ -136,7 +134,7 @@ public class NoticeRepositoryTest {
 		assertSame(result, notice);
 	}
 	
-	/*@Test
+	@Test
 	public void testDelete() throws Exception {
 		
 		noticeRepository.save(notice);
@@ -150,5 +148,5 @@ public class NoticeRepositoryTest {
 		result = noticeRepository.findAll();
 		
 		assertThat(result.size(),is(0));
-	}*/
+	}
 }

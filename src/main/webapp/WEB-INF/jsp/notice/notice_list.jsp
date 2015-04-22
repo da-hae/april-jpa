@@ -6,6 +6,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
 	<title>april-jpa</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -13,21 +14,11 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	
+	<!-- Dahae Custom theme -->
+	<link rel="stylesheet" href="/april-jpa/resources/css/dh-homepage.css">
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="/april-jpa/webjars/jquery/2.1.3/jquery.min.js"></script>
-	
-	<style type="text/css">
-		body {
-			padding-top: 50px;
-		}
-		
-		.starter-template {
-			padding: 40px 15px;
-			text-align: center;
-		}
-	</style>
-	
-	
 </head>
 
 <body>
@@ -63,13 +54,13 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="starter-template">
 			<h1>안녕하세요</h1>
 			<p class="lead">
 				간단한 게시판을 만들어보기 위해 작성된 페이지 입니다
 			</p>
-			<form role="form">
+			<form method="get" action="<c:url value='/notice/list.html' />" role="form">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -81,16 +72,16 @@
 							<li><a href="#writer">작성자</a></li>
 						</ul>
 					</div>
-					<input type="text" class="form-control" name="x" placeholder="검색">
+					<input id="title" name="title" type="text" class="form-control" name="x" placeholder="검색">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button" >&nbsp;<span class="glyphicon glyphicon-search"/></button>
+						<button class="btn btn-default" type="submit" >&nbsp;<span class="glyphicon glyphicon-search"/></button>
 					</span>
 				</div>
 			</form>
 			<div class="panel panel-default">
 				<div class="panel-heading">공지사항 목록</div>
 				<!-- Table -->
-				<table class="table table-striped table-hover">
+				<table id="notice-list" class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th class="text-center">번호</th>
@@ -108,12 +99,9 @@
 						</c:if>
 						<c:if test="${!empty noticeList}">
 							<c:forEach items="${noticeList}" var="notice">
-								<tr>
+								<tr data-notice-key="<c:url value='/html/notice/notice_view.html'/>" >
 									<td class="text-center">${notice.id}</td>
-									<td class="text-center">
-										<a href="/april-jpa/html/notice/notice_view.html" />
-										${notice.title}
-									</td>
+									<td class="text-center">${notice.title}</td>
 									<td class="text-center">${notice.hits}</td>
 									<td class="text-center">${notice.rernm}</td>
 									<td class="text-center">${notice.rdate}</td>
@@ -127,26 +115,42 @@
 				<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/form';">글쓰기</button>
 			</p>
 			<ul class="pagination">
-				<li>
-					<a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">7</a></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li><a href="#">10</a></li>
-				<li>
-					<a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-				</li>
+				<c:if test="${noticePaging.startPage < noticePaging.page}">
+					<li>
+						<a href="<c:url value='/notice/list.html?page=${noticePaging.firstPage}'/>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+					</li>
+				</c:if>
+				<c:forEach var="i" begin="${noticePaging.startPage}" end="${noticePaging.endPage}" step="1">
+					<c:choose>
+						<c:when test="${i eq noticePaging.page}">
+							<li class="active">
+								<a href="<c:url value='/notice/list.html?page=${i}'/>">${i}</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href="<c:url value='/notice/list.html?page=${i}'/>">${i}</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${noticePaging.page < noticePaging.endPage}">
+					<li>
+						<a href="<c:url value='/notice/list.html?page=${noticePaging.nextPage}'/>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 	</div>
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="/april-jpa/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>		
+	<script src="/april-jpa/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#notice-list tbody tr').on('click', function(){
+				location.href = $(this).attr("data-notice-key");
+			});
+		});
+	</script>
 </body>
 </html>

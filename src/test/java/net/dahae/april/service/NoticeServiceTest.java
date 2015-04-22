@@ -1,15 +1,9 @@
 package net.dahae.april.service;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
-
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import net.dahae.april.model.notice.Notice;
 import net.dahae.april.service.notice.NoticeService;
 
 import org.junit.Test;
