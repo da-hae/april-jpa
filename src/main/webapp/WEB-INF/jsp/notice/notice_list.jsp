@@ -99,7 +99,7 @@
 						</c:if>
 						<c:if test="${!empty noticeList}">
 							<c:forEach items="${noticeList}" var="notice">
-								<tr data-notice-key="<c:url value='/html/notice/notice_view.html'/>" >
+								<tr data-notice-key="<c:url value='/notice/view?id=${notice.id}'/>" >
 									<td class="text-center">${notice.id}</td>
 									<td class="text-center">${notice.title}</td>
 									<td class="text-center">${notice.hits}</td>

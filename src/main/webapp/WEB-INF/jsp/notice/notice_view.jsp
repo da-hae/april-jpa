@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -54,15 +55,15 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
+	<form:form method="POST" commandName="noticeView" action="view" class="form-horizontal" role="form">
 	<div class="container-fluid" >
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">공지사항 테스트1</h3>
+				<h3 class="panel-title">${noticeView.title}</h3>
 			</div>
 			<div class="panel-body">
 				<div class="well">
-				<p>공지사항 내용 테스트 입니다.</p>
-				<p>해당 내용은 테스트 내용입니다.</p>
+				<p>${noticeView.content}</p>
 				</div>
 			</div>
 		</div>
@@ -70,12 +71,13 @@
 			<ul class="pager">
 				<li class="previous"><a href="javascript:window.history.back();"><span aria-hidden="true">&larr;</span>&nbsp;뒤로가기</a></li>
 				<p class="text-right">
-					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/html/notice/notice_form.html';">수정</button>
-					<button type="button" class="btn btn-default">삭제</button>
+					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/form?id=${noticeView.id}';">수정</button>
+					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/list.html?id=${noticeView.id}';">삭제</button>
 				</p>
 			</ul>
 		</nav>
 	</div>
+	</form:form>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="/april-jpa/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>

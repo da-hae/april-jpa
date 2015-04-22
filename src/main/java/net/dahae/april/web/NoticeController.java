@@ -1,5 +1,6 @@
 package net.dahae.april.web;
 
+import net.dahae.april.model.BoardBaseEntity;
 import net.dahae.april.model.BoardPaging;
 //github.com/da-hae/april-jpa.gitimport net.dahae.april.model.BoardPaging;
 import net.dahae.april.model.notice.Notice;
@@ -21,8 +22,22 @@ public class NoticeController {
 	
 	Notice notice;
 	
+	BoardBaseEntity boardBaseEntity;
+	
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public String initCreationForm(
+			@RequestParam(defaultValue="1" ,required=false) Integer page,
+			@RequestParam(defaultValue="" ,required=false) String title,
+			Model model) {
+		
+		model.addAttribute("noticePaging" , new BoardPaging(page, noticeService.find(title).size()));
+		model.addAttribute("noticeList"   , noticeService.findByPaging(title, page)                );
+		
+		return "notice/notice_list";
+	}
+	
+	@RequestMapping(value = "/list.html", method = RequestMethod.POST)
+	public String initCreationForm1(
 			@RequestParam(defaultValue="1" ,required=false) Integer page,
 			@RequestParam(defaultValue="" ,required=false) String title,
 			Model model) {
@@ -37,7 +52,6 @@ public class NoticeController {
 	public String processCreationForm(Model model) {
 		
 		model.addAttribute("noticeForm" , new Notice());
-		
 		return "notice/notice_form";
 	}
 	
@@ -46,6 +60,31 @@ public class NoticeController {
 		
 		noticeService.save(notice);
 		
-		return "redirect:/notice/list";
+		return "redirect:/notice/list.html";
 	}
+	
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public String processCreationForm1(
+			@RequestParam(defaultValue="" ,required=false) long id,
+			Model model) {
+		model.addAttribute("noticeView"   , noticeService.findById(id));		
+		return "notice/notice_view";
+	}
+	
+	@RequestMapping(value = "?id", method = RequestMethod.GET)
+	public String processCreationForm2(
+			@RequestParam(defaultValue="" ,required=false) long id,
+			Model model) {
+		System.out.println("333333");
+		noticeService.delete(notice);		
+		return "notice/notice_form";
+	}
+	
+/*	@RequestMapping(value = "/view", method = RequestMethod.POST)
+	public String processUpdateForm1(Notice notice, Model model) {
+		
+		noticeService.save(notice);
+		
+		return "redirect:/notice/list.html";
+	}*/
 }
