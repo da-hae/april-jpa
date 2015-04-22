@@ -1,11 +1,12 @@
 package net.dahae.april.repository.jpa;
 
+import java.util.Date;
 import java.util.List;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import net.dahae.april.model.notice.Notice;
 import net.dahae.april.repository.NoticeRepository;
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class JpaNoticeRepositoryImpl implements NoticeRepository {
+	
+	
 
 	@PersistenceContext
 	EntityManager em;
@@ -63,12 +66,14 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 		 */
 		return this.em.find(Notice.class, id);
 	}
-
+	
 	public void save(Notice notice) throws DataAccessException {
 		if (notice.getId() == null) {
-    		this.em.persist(notice);     		
+			notice.setRdate(new Date());
+    		this.em.persist(notice);    		
     	}
     	else {
+    		notice.setMdate(new Date());
     		this.em.merge(notice);    
     	}
 	}

@@ -1,6 +1,5 @@
 package net.dahae.april.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
@@ -8,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BoardBaseEntity extends BaseEntity implements Serializable {
+public class BoardBaseEntity extends BaseEntity{
 	/**
 	 * ID (I)
 	 */

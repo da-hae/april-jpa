@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -48,6 +49,7 @@ public class NoticeModelTest {
 //	}
 	
 	@Test
+	@Rollback(value = false)
 	public void testPersistEquals() throws Exception {
 		
 		em.persist(notice);

@@ -3,6 +3,8 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
 	<title>april-jpa</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -10,14 +12,12 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	
+	<!-- Dahae Custom theme -->
+	<link rel="stylesheet" href="/april-jpa/resources/css/dh-homepage.css">
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="/april-jpa/webjars/jquery/2.1.3/jquery.min.js"></script>
 	
-	<style type="text/css">
-		body {
-			padding-top: 100px;
-		}
-	</style>
 </head>
 
 <body>
@@ -53,7 +53,7 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div class="container" >
+	<div class="container-fluid" >
 		<div class="panel panel-default">
 			<div class="panel-heading">QnA 정보</div>
 			<div class="panel-body">

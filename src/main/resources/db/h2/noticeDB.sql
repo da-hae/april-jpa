@@ -1,0 +1,12 @@
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (1, null, '', '', null, 'dev', '개발자', '내용1', 0, '제목1');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (2, null, '', '', null, 'dev', '개발자', '내용2', 0, '제목2');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (3, null, '', '', null, 'dev', '개발자', '내용3', 0, '제목3');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (4, null, '', '', null, 'dev', '개발자', '내용4', 0, '제목4');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (5, null, '', '', null, 'dev', '개발자', '내용5', 0, '제목5');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (6, null, '', '', null, 'dev', '개발자', '내용6', 0, '제목6');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (7, null, '', '', null, 'dev', '개발자', '내용7', 0, '제목7');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (8, null, '', '', null, 'dev', '개발자', '내용8', 0, '제목8');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (9, null, '', '', null, 'dev', '개발자', '내용9', 0, '제목9');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (10, null, '', '', null, 'dev', '개발자', '내용10', 0, '제목10');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (11, null, '', '', null, 'dev', '개발자', '내용11', 0, '제목11');
+INSERT INTO Notice (id, mdate, merid, mernm, rdate, rerid, rernm, content, hits, title) VALUES (12, null, '', '', null, 'dev', '개발자', '내용12', 0, '제목12');

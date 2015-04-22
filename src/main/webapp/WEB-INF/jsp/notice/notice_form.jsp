@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -54,35 +55,37 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div class="container">
-		<div class="panel panel-default">
-			<div class="panel-heading">공지사항 등록/수정</div>
-			<div class="panel-body">
-				<form class="form-horizontal" role="form">
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="title">제목:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="title" placeholder="제목">
+	<form:form method="POST" commandName="noticeForm" action="form" class="form-horizontal" role="form">
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">공지사항 등록/수정</div>
+				<div class="panel-body">
+					
+						<div class="form-group">
+							<form:label class="control-label col-sm-2" path="title">제목:</form:label>
+							<div class="col-sm-10">
+								<form:input type="text" class="form-control" path="title" values="${notice.title}"/>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="content">내용:</label>
-						<div class="col-sm-10">
-							<textarea class="form-control" cols="100" rows="15"></textarea>
+						<div class="form-group">
+							<form:label class="control-label col-sm-2" path="content">내용:</form:label>
+							<div class="col-sm-10">
+								<form:textarea class="form-control" cols="100" rows="15" path="content" values="${notice.content}"/>
+							</div>
 						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-		<nav>
-			<ul class="pager">
-				<li class="previous"><a href="javascript:window.history.back();"><span aria-hidden="true">&larr;</span>&nbsp;뒤로가기</a></li>
-				<div class="text-right">
-					<button type="submit" class="btn btn-default">저장</button>&nbsp;
+					
 				</div>
-			</ul>
-		</nav>
-	</div>
+			</div>
+			<nav>
+				<ul class="pager">
+					<li class="previous"><a href="javascript:window.history.back();"><span aria-hidden="true">&larr;</span>&nbsp;뒤로가기</a></li>
+					<div class="text-right">
+						<form:button type="submit" class="btn btn-default">저장</form:button>&nbsp;
+					</div>
+				</ul>
+			</nav>
+		</div>
+	</form:form>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="/april-jpa/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>		
 </body>

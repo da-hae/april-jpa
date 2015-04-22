@@ -21,9 +21,15 @@ public class NoticeServiceImpl implements NoticeService{
 	NoticeRepository noticeRepository;
 	
 //	@Override
-	@Transactional
 	public List<Notice> findAll() throws DataAccessException {
 		return noticeRepository.findAll();
 	}
+
+	@Transactional
+	public void save(Notice notice) throws DataAccessException {	
+		noticeRepository.save(notice);
+	}
+	
+	
 
 }

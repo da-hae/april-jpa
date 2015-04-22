@@ -14,6 +14,6 @@ public interface NoticeService {
 	List<Notice> find(String title) throws DataAccessException;
 	
 	List<Notice> findByPaging(String title, Integer page) throws DataAccessException;
-
+	
 	void save(Notice notice) throws DataAccessException;
 }

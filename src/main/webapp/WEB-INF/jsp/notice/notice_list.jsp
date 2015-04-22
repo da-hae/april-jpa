@@ -5,6 +5,7 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>april-jpa</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="/april-jpa/webjars/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -123,7 +124,7 @@
 				</table>
 			</div>
 			<p class="text-right">
-				<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/html/notice/notice_form.html';">글쓰기</button>
+				<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/form';">글쓰기</button>
 			</p>
 			<ul class="pagination">
 				<li>
