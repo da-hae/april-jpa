@@ -51,7 +51,6 @@
 				<props>
 					<prop key="hibernate.format_sql">true</prop>
 					<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
-					<prop key="hibernate.hbm2ddl.auto">create</prop>
 				</props>
 			</property>
 		</bean>
@@ -83,7 +82,7 @@
 			<constructor-arg ref="dataSource"/>
 		</bean>
 
-		<context:component-scan base-package="net.dahae.april.repository.jpa"/>
+		<context:component-scan base-package="net.dahae.april.repository.jdbc"/>
 	</beans>
 
 	<beans profile="jpa">
