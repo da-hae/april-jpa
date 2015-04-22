@@ -55,7 +55,7 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<form:form method="POST" commandName="noticeForm" action="list" class="form-horizontal" role="form">
+	<form:form method="POST" commandName="noticeForm" action="form" class="form-horizontal" role="form">
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-heading">공지사항 등록/수정</div>
@@ -64,7 +64,8 @@
 					<div class="form-group">
 						<form:label class="control-label col-sm-2" path="title">제목:</form:label>
 						<div class="col-sm-10">
-							<form:input type="text" class="form-control" path="title" values="${notice.title}"/>
+						${notice.title}
+							<form:input type="text" class="form-control" path="title" values="${noticeView.title}"/>
 						</div>
 					</div>
 					<div class="form-group">

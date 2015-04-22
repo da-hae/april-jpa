@@ -6,8 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
-
 import net.dahae.april.model.BoardPaging;
 import net.dahae.april.model.notice.Notice;
 import net.dahae.april.repository.NoticeRepository;
@@ -30,7 +28,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Notice> findByTitle(String title) throws DataAccessException {
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title");
+		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title ORDER BY n.id DESC");
 		query.setParameter("title", "%"+title+"%");
 		return query.getResultList();
 	}
@@ -54,14 +52,14 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Notice> findAll() throws DataAccessException {
-		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id").getResultList();
+		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id ASC").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Notice> findByPaging(String title, Integer page) throws DataAccessException {
 		
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title");
+		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title ORDER BY n.id DESC");
 		query.setParameter("title", "%"+title+"%");
 		query.setFirstResult(BoardPaging.getPageFirstResult(page)).setMaxResults(BoardPaging.PAGE_SIZE);
 		
@@ -74,14 +72,14 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 		/**
 		 * example 1
 		 */
-//		Query query = this.em.createQuery("SELECT n FROM Notice n where n.id= :id");
-//		query.setParameter("id", id);
-//		return (Notice)query.getSingleResult();
+		Query query = this.em.createQuery("SELECT n FROM Notice n where n.id= :id");
+		query.setParameter("id", id);
+		return (Notice)query.getSingleResult();
 		
 		/**
 		 * example 2
 		 */
-		return this.em.find(Notice.class, id);
+		//return this.em.find(Notice.class, id);
 	}
 	
 	@Override

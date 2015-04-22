@@ -35,4 +35,24 @@ public class NoticeServiceImpl implements NoticeService{
 	public void save(Notice notice) throws DataAccessException {	
 		noticeRepository.save(notice);
 	}
+	
+	@Override
+	public Notice findById(Long id) throws DataAccessException {
+		
+		/**
+		 * example 1
+		 */
+//		Query query = this.em.createQuery("SELECT n FROM Notice n where n.id= :id");
+//		query.setParameter("id", id);
+//		return (Notice)query.getSingleResult();
+		
+		/**
+		 * example 2
+		 */
+		return noticeRepository.findById(id);
+	}
+	
+	public void delete(Notice notice) throws DataAccessException {
+		noticeRepository.delete(notice);
+	}
 }
