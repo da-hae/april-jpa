@@ -31,28 +31,34 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeRepository.findByPaging(title, page);
 	}
 	
+	@Override
 	@Transactional
 	public void save(Notice notice) throws DataAccessException {	
 		noticeRepository.save(notice);
 	}
 	
 	@Override
-	public Notice findById(Long id) throws DataAccessException {
-		
-		/**
-		 * example 1
-		 */
-//		Query query = this.em.createQuery("SELECT n FROM Notice n where n.id= :id");
-//		query.setParameter("id", id);
-//		return (Notice)query.getSingleResult();
-		
-		/**
-		 * example 2
-		 */
-		return noticeRepository.findById(id);
-	}
-	
+	@Transactional
 	public void delete(Notice notice) throws DataAccessException {
 		noticeRepository.delete(notice);
+	}
+	
+	@Override
+	public Notice find(Notice notice) throws DataAccessException {
+		return noticeRepository.findById(notice.getId());
+	}
+
+	@Override
+	@Transactional
+	public Notice findByView(Notice notice) throws DataAccessException {
+		notice = noticeRepository.findById(notice.getId());
+		notice.setHits(notice.getHits() + 1);
+		
+		/**
+		 * view hits increation
+		 */
+		noticeRepository.save(notice);
+		
+		return notice;
 	}
 }

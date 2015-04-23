@@ -31,12 +31,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/april-jpa/html/notice/notice_list.html">April-jpa</a>
+				<a class="navbar-brand" href="/april-jpa/html/notice/notice_list">April-jpa</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/april-jpa/html/notice/notice_list.html">공지사항</a></li>
-					<li><a href="/april-jpa/html/qna/qna_list.html">QnA</a></li>
+					<li class="active"><a href="/april-jpa/html/notice/notice_list">공지사항</a></li>
+					<li><a href="/april-jpa/html/qna/qna_list">QnA</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -60,7 +60,7 @@
 			<p class="lead">
 				간단한 게시판을 만들어보기 위해 작성된 페이지 입니다
 			</p>
-			<form method="get" action="<c:url value='/notice/list.html' />" role="form">
+			<form method="get" action="<c:url value='/notice/list' />" role="form">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -112,31 +112,31 @@
 				</table>
 			</div>
 			<p class="text-right">
-				<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/form';">글쓰기</button>
+				<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/add';">글쓰기</button>
 			</p>
 			<ul class="pagination">
 				<c:if test="${noticePaging.startPage < noticePaging.page}">
 					<li>
-						<a href="<c:url value='/notice/list.html?page=${noticePaging.firstPage}'/>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+						<a href="<c:url value='/notice/list?page=${noticePaging.firstPage}'/>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
 					</li>
 				</c:if>
 				<c:forEach var="i" begin="${noticePaging.startPage}" end="${noticePaging.endPage}" step="1">
 					<c:choose>
 						<c:when test="${i eq noticePaging.page}">
 							<li class="active">
-								<a href="<c:url value='/notice/list.html?page=${i}'/>">${i}</a>
+								<a href="<c:url value='/notice/list?page=${i}'/>">${i}</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li>
-								<a href="<c:url value='/notice/list.html?page=${i}'/>">${i}</a>
+								<a href="<c:url value='/notice/list?page=${i}'/>">${i}</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${noticePaging.page < noticePaging.endPage}">
 					<li>
-						<a href="<c:url value='/notice/list.html?page=${noticePaging.nextPage}'/>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+						<a href="<c:url value='/notice/list?page=${noticePaging.nextPage}'/>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 					</li>
 				</c:if>
 			</ul>

@@ -14,7 +14,7 @@ public class BoardBaseEntity extends BaseEntity{
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	/**
 	 * 등록 일시 (register date)
 	 */
@@ -44,6 +44,10 @@ public class BoardBaseEntity extends BaseEntity{
 	 * 수정자 이름(modifier name)
 	 */
 	private String mernm;
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public Long getId() {
 		return id;

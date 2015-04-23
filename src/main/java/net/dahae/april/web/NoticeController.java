@@ -1,14 +1,18 @@
 package net.dahae.april.web;
 
+
 import net.dahae.april.model.BoardBaseEntity;
 import net.dahae.april.model.BoardPaging;
 //github.com/da-hae/april-jpa.gitimport net.dahae.april.model.BoardPaging;
 import net.dahae.april.model.notice.Notice;
 import net.dahae.april.service.notice.NoticeService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,14 +21,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = "/notice")
 public class NoticeController {
 	
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	NoticeService noticeService;
 	
-	Notice notice;
-	
 	BoardBaseEntity boardBaseEntity;
 	
-	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String initCreationForm(
 			@RequestParam(defaultValue="1" ,required=false) Integer page,
 			@RequestParam(defaultValue="" ,required=false) String title,
@@ -36,55 +40,48 @@ public class NoticeController {
 		return "notice/notice_list";
 	}
 	
-	@RequestMapping(value = "/list.html", method = RequestMethod.POST)
-	public String initCreationForm1(
-			@RequestParam(defaultValue="1" ,required=false) Integer page,
-			@RequestParam(defaultValue="" ,required=false) String title,
-			Model model) {
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String processAddForm(Model model) {
 		
-		model.addAttribute("noticePaging" , new BoardPaging(page, noticeService.find(title).size()));
-		model.addAttribute("noticeList"   , noticeService.findByPaging(title, page)                );
+		model.addAttribute("notice" , new Notice());
 		
-		return "notice/notice_list";
+		return "notice/notice_add";
 	}
 	
-	@RequestMapping(value = "/form", method = RequestMethod.GET)
-	public String processCreationForm(Model model) {
-		
-		model.addAttribute("noticeForm" , new Notice());
-		return "notice/notice_form";
-	}
-	
-	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String processUpdateForm(Notice notice, Model model) {
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String processAdd(@ModelAttribute Notice notice, Model model) {
 		
 		noticeService.save(notice);
 		
-		return "redirect:/notice/list.html";
+		return "redirect:/notice/list";
 	}
 	
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	public String processCreationForm1(
-			@RequestParam(defaultValue="" ,required=false) long id,
-			Model model) {
-		model.addAttribute("noticeView"   , noticeService.findById(id));		
+	public String processViewForm(@ModelAttribute Notice notice, Model model) {
+		
+		logger.debug(" view notice : {}", notice);
+		
+		model.addAttribute("notice" , noticeService.findByView(notice));
+		
 		return "notice/notice_view";
 	}
 	
-	@RequestMapping(value = "?id", method = RequestMethod.GET)
-	public String processCreationForm2(
-			@RequestParam(defaultValue="" ,required=false) long id,
-			Model model) {
-		System.out.println("333333");
-		noticeService.delete(notice);		
-		return "notice/notice_form";
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String processUpdateForm(@ModelAttribute Notice notice, Model model) {
+		
+		logger.debug(" update notice : {}", notice);
+		
+		model.addAttribute("notice" , notice);
+		
+		return "notice/notice_update";
 	}
 	
-/*	@RequestMapping(value = "/view", method = RequestMethod.POST)
-	public String processUpdateForm1(Notice notice, Model model) {
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String processDelete(
+			@RequestParam(defaultValue="" ,required=false) long id,
+			Notice notice, Model model) {
 		
-		noticeService.save(notice);
-		
-		return "redirect:/notice/list.html";
-	}*/
+		return "redirect:/notice/list";
+	}
+	
 }

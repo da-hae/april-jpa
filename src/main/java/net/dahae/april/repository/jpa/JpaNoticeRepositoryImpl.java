@@ -68,18 +68,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	
 	@Override
 	public Notice findById(Long id) throws DataAccessException {
-		
-		/**
-		 * example 1
-		 */
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.id= :id");
-		query.setParameter("id", id);
-		return (Notice)query.getSingleResult();
-		
-		/**
-		 * example 2
-		 */
-		//return this.em.find(Notice.class, id);
+		return this.em.find(Notice.class, id);
 	}
 	
 	@Override
@@ -96,6 +85,7 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	
 	@Override
 	public void delete(Notice notice) throws DataAccessException {
+		notice = this.em.merge(notice);
 		this.em.remove(notice);
 	}
 }

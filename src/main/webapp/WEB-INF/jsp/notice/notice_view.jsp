@@ -32,12 +32,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/april-jpa/html/notice/notice_list.html">April-jpa</a>
+				<a class="navbar-brand" href="/april-jpa/html/notice/notice_list">April-jpa</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/april-jpa/html/notice/notice_list.html">공지사항</a></li>
-					<li><a href="/april-jpa/html/qna/qna_list.html">QnA</a></li>
+					<li class="active"><a href="/april-jpa/html/notice/notice_list">공지사항</a></li>
+					<li><a href="/april-jpa/html/qna/qna_list">QnA</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -55,24 +55,26 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<form:form method="POST" commandName="noticeView" action="view" class="form-horizontal" role="form">
+	<form:form method="GET" commandName="notice" action="delete" class="form-horizontal" role="form">
 	<div class="container-fluid" >
+		
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">${noticeView.title}</h3>
+				<h3 class="panel-title">${notice.title}</h3>
 			</div>
 			<div class="panel-body">
 				<div class="well">
-				<p>${noticeView.content}</p>
+					<p>${notice.content}</p>
 				</div>
 			</div>
 		</div>
+		
 		<nav>
 			<ul class="pager">
 				<li class="previous"><a href="javascript:window.history.back();"><span aria-hidden="true">&larr;</span>&nbsp;뒤로가기</a></li>
 				<p class="text-right">
-					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/form?id=${noticeView.id}';">수정</button>
-					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/list.html?id=${noticeView.id}';">삭제</button>
+					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/update?id=${noticeView.id}';">수정</button>
+					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/delete?id=${noticeView.id}';">삭제</button>
 				</p>
 			</ul>
 		</nav>
@@ -80,5 +82,6 @@
 	</form:form>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="/april-jpa/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 </body>
 </html>

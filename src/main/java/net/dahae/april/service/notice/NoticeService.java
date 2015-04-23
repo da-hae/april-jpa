@@ -17,7 +17,9 @@ public interface NoticeService {
 	
 	void save(Notice notice) throws DataAccessException;
 	
-	Notice findById(Long id) throws DataAccessException;
+	Notice find(Notice notice) throws DataAccessException;
+	
+	Notice findByView(Notice notice) throws DataAccessException;
 	
 	void delete(Notice notice) throws DataAccessException;
 }

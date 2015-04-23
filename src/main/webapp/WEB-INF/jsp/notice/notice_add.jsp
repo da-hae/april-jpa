@@ -32,12 +32,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/april-jpa/html/notice/notice_list.html">April-jpa</a>
+				<a class="navbar-brand" href="/april-jpa/html/notice/notice_list">April-jpa</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/april-jpa/html/notice/notice_list.html">공지사항</a></li>
-					<li><a href="/april-jpa/html/qna/qna_list.html">QnA</a></li>
+					<li class="active"><a href="/april-jpa/html/notice/notice_list">공지사항</a></li>
+					<li><a href="/april-jpa/html/qna/qna_list">QnA</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -55,26 +55,23 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<form:form method="POST" commandName="noticeForm" action="form" class="form-horizontal" role="form">
+	<form:form method="POST" commandName="notice" action="add" class="form-horizontal" role="form">
 	<div class="container">
 		<div class="panel panel-default">
-			<div class="panel-heading">공지사항 등록/수정</div>
+			<div class="panel-heading">공지사항 등록</div>
 			<div class="panel-body">
-				
-					<div class="form-group">
-						<form:label class="control-label col-sm-2" path="title">제목:</form:label>
-						<div class="col-sm-10">
-						${notice.title}
-							<form:input type="text" class="form-control" path="title" values="${noticeView.title}"/>
-						</div>
+				<div class="form-group">
+					<form:label class="control-label col-sm-2" path="title">제목:</form:label>
+					<div class="col-sm-10">
+						<form:input type="text" class="form-control" path="title" />
 					</div>
-					<div class="form-group">
-						<form:label class="control-label col-sm-2" path="content">내용:</form:label>
-						<div class="col-sm-10">
-							<form:textarea class="form-control" cols="100" rows="15" path="content" values="${notice.content}"/>
-						</div>
+				</div>
+				<div class="form-group">
+					<form:label class="control-label col-sm-2" path="content">내용:</form:label>
+					<div class="col-sm-10">
+						<form:textarea class="form-control" cols="100" rows="15" path="content" />
 					</div>
-				
+				</div>
 			</div>
 		</div>
 		<nav>
