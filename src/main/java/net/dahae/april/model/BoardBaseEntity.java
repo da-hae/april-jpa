@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import net.dahae.april.model.entity.RegisterAndModifyEntity;
+import net.dahae.april.model.entity.RegisterAndModifyEntityListener;
+
 @MappedSuperclass
 @EntityListeners(value = {RegisterAndModifyEntityListener.class})
 public class BoardBaseEntity extends BaseEntity implements RegisterAndModifyEntity{
@@ -53,10 +56,6 @@ public class BoardBaseEntity extends BaseEntity implements RegisterAndModifyEnti
 	
 	public Long getId() {
 		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
 	}
 	
 	@Override
