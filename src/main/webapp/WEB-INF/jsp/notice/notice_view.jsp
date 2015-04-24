@@ -73,8 +73,8 @@
 			<ul class="pager">
 				<li class="previous"><a href="javascript:window.history.back();"><span aria-hidden="true">&larr;</span>&nbsp;뒤로가기</a></li>
 				<p class="text-right">
-					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/update?id=${noticeView.id}';">수정</button>
-					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/delete?id=${noticeView.id}';">삭제</button>
+					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/update?id=${notice.id}';">수정</button>
+					<button type="button" class="btn btn-default" onclick="javascript:location.href='/april-jpa/notice/delete?id=${notice.id}';">삭제</button>
 				</p>
 			</ul>
 		</nav>

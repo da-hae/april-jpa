@@ -2,12 +2,14 @@ package net.dahae.april.model;
 
 import java.util.Date;
 
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BoardBaseEntity extends BaseEntity{
+@EntityListeners(value = {RegisterAndModifyEntityListener.class})
+public class BoardBaseEntity extends BaseEntity implements RegisterAndModifyEntity{
 	/**
 	 * ID (I)
 	 */
@@ -52,11 +54,17 @@ public class BoardBaseEntity extends BaseEntity{
 	public Long getId() {
 		return id;
 	}
-
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	@Override
 	public Date getRdate() {
 		return rdate;
 	}
-
+	
+	@Override
 	public void setRdate(Date wdate) {
 		this.rdate = wdate;
 	}
@@ -76,11 +84,13 @@ public class BoardBaseEntity extends BaseEntity{
 	public void setRernm(String wnm) {
 		this.rernm = wnm;
 	}
-
+	
+	@Override
 	public Date getMdate() {
 		return mdate;
 	}
-
+	
+	@Override
 	public void setMdate(Date edate) {
 		this.mdate = edate;
 	}

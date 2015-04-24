@@ -56,6 +56,14 @@ public class NoticeController {
 		return "redirect:/notice/list";
 	}
 	
+	@RequestMapping(value = "/addUpdate", method = RequestMethod.POST)
+	public String processAddUpdate(@ModelAttribute Notice notice, Model model) {
+		
+		noticeService.save(noticeService.findByView(notice));
+		
+		return "redirect:/notice/list";
+	}
+	
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public String processViewForm(@ModelAttribute Notice notice, Model model) {
 		
@@ -71,7 +79,7 @@ public class NoticeController {
 		
 		logger.debug(" update notice : {}", notice);
 		
-		model.addAttribute("notice" , notice);
+		model.addAttribute("notice" , noticeService.findByView(notice));
 		
 		return "notice/notice_update";
 	}
@@ -80,6 +88,8 @@ public class NoticeController {
 	public String processDelete(
 			@RequestParam(defaultValue="" ,required=false) long id,
 			Notice notice, Model model) {
+		
+		noticeService.delete(notice);
 		
 		return "redirect:/notice/list";
 	}

@@ -55,7 +55,7 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<form:form method="POST" commandName="notice" action="update" class="form-horizontal" role="form">
+	<form:form method="POST" commandName="notice" action="addUpdate" class="form-horizontal" role="form">
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-heading">공지사항 등록/수정</div>
