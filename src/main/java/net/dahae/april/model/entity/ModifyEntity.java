@@ -6,5 +6,5 @@ public interface ModifyEntity {
 
 	Date getMdate();
 	
-	void setMdate(Date Mdate);
+	void setMdate(Date mdate);
 }

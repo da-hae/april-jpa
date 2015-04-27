@@ -1,11 +1,11 @@
 package net.dahae.april.repository.jpa;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import net.dahae.april.model.BoardPaging;
 import net.dahae.april.model.notice.Notice;
 import net.dahae.april.repository.NoticeRepository;
@@ -27,40 +27,49 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Notice> findByTitle(String title) throws DataAccessException {
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title ORDER BY n.id DESC");
-		query.setParameter("title", "%"+title+"%");
+	public List<Notice> findByTitle(String param) throws DataAccessException {
+		Query query = em.createQuery("SELECT n FROM Notice n where upper(n.title) like :title ORDER BY n.id DESC");
+		
+		param = param.toUpperCase();
+		query.setParameter("title", "%" + param + "%");
+		
 		return query.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Notice> findByContent(String content) throws DataAccessException {
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.content like :content");
-		query.setParameter("content", "%"+content+"%");
+	public List<Notice> findByContent(String param) throws DataAccessException {
+		Query query = em.createQuery("SELECT n FROM Notice n where upper(n.content) like :content");
+		
+		param = param.toUpperCase();
+		query.setParameter("content", "%" + param + "%");
+		
 		return query.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Notice> findByRernm(String rernm) throws DataAccessException {
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.rernm = :rernm");
-		query.setParameter("rernm", rernm);
+	public List<Notice> findByRernm(String param) throws DataAccessException {
+		Query query = em.createQuery("SELECT n FROM Notice n where n.rernm like :rernm");
+		query.setParameter("rernm", "%" + param + "%");
+		
 		return query.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Notice> findAll() throws DataAccessException {
-		return this.em.createQuery("SELECT n FROM Notice n ORDER BY n.id ASC").getResultList();
+		return em.createQuery("SELECT n FROM Notice n ORDER BY n.id ASC").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Notice> findByPaging(String title, Integer page) throws DataAccessException {
+	public List<Notice> findByPaging(String param, Integer page) throws DataAccessException {
+		Query query = em.createQuery("SELECT n FROM Notice n where n.title like :title ORDER BY n.id DESC");
 		
-		Query query = this.em.createQuery("SELECT n FROM Notice n where n.title like :title ORDER BY n.id DESC");
-		query.setParameter("title", "%"+title+"%");
+		param = param.toUpperCase();
+		query.setParameter("title", "%"+param+"%");
+		
 		query.setFirstResult(BoardPaging.getPageFirstResult(page)).setMaxResults(BoardPaging.PAGE_SIZE);
 		
 		return query.getResultList();
@@ -68,24 +77,22 @@ public class JpaNoticeRepositoryImpl implements NoticeRepository {
 	
 	@Override
 	public Notice findById(Long id) throws DataAccessException {
-		return this.em.find(Notice.class, id);
+		return em.find(Notice.class, id);
 	}
 	
 	@Override
 	public void save(Notice notice) throws DataAccessException {
-		if (notice.getId() == null) {
-			notice.setRdate(new Date());
-    		this.em.persist(notice);    		
-    	}
-    	else {
-    		notice.setMdate(new Date());
-    		this.em.merge(notice);    
-    	}
+		if (notice.getId() == null){
+			em.persist(notice);
+		}
+		else{
+			em.merge(notice);
+		}
 	}
 	
 	@Override
 	public void delete(Notice notice) throws DataAccessException {
-		notice = this.em.merge(notice);
-		this.em.remove(notice);
+		notice = findById(notice.getId());
+		em.remove(notice);
 	}
 }

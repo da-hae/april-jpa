@@ -50,38 +50,54 @@ public class BoardBaseEntity extends BaseEntity implements RegisterAndModifyEnti
 	 */
 	private String mernm;
 	
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	public Long getId() {
 		return id;
 	}
-	
-	@Override
-	public Date getRdate() {
-		return rdate;
-	}
-	
-	@Override
-	public void setRdate(Date wdate) {
-		this.rdate = wdate;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getRerid() {
 		return rerid;
 	}
 
-	public void setRerid(String wid) {
-		this.rerid = wid;
+	public void setRerid(String rerid) {
+		this.rerid = rerid;
 	}
 
 	public String getRernm() {
 		return rernm;
 	}
 
-	public void setRernm(String wnm) {
-		this.rernm = wnm;
+	public void setRernm(String rernm) {
+		this.rernm = rernm;
+	}
+
+	public String getMerid() {
+		return merid;
+	}
+
+	public void setMerid(String merid) {
+		this.merid = merid;
+	}
+
+	public String getMernm() {
+		return mernm;
+	}
+
+	public void setMernm(String mernm) {
+		this.mernm = mernm;
+	}
+
+	@Override
+	public Date getRdate() {
+		return rdate;
+	}
+	
+	@Override
+	public void setRdate(Date rdate) {
+		this.rdate = rdate;
 	}
 	
 	@Override
@@ -90,23 +106,7 @@ public class BoardBaseEntity extends BaseEntity implements RegisterAndModifyEnti
 	}
 	
 	@Override
-	public void setMdate(Date edate) {
-		this.mdate = edate;
-	}
-
-	public String getMerid() {
-		return merid;
-	}
-
-	public void setMerid(String eid) {
-		this.merid = eid;
-	}
-
-	public String getMernm() {
-		return mernm;
-	}
-
-	public void setMernm(String enm) {
-		this.mernm = enm;
+	public void setMdate(Date mdate) {
+		this.mdate = mdate;
 	}
 }
