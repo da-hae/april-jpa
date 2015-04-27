@@ -15,7 +15,7 @@ public class Notice extends BoardBaseEntity {
 	private static final long serialVersionUID = -5297636336544431765L;
 	
 	/**
-	 * 제목 (title0
+	 * 제목 (title)
 	 */
 	@NotEmpty
 	@Length(max = 125)

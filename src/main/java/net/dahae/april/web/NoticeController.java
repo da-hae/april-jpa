@@ -1,6 +1,8 @@
 package net.dahae.april.web;
 
 
+import javax.validation.Valid;
+
 import net.dahae.april.model.BoardBaseEntity;
 import net.dahae.april.model.BoardPaging;
 //github.com/da-hae/april-jpa.gitimport net.dahae.april.model.BoardPaging;
@@ -12,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,17 +52,16 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAdd(@ModelAttribute Notice notice, Model model) {
+	public String processAdd(
+			@Valid @ModelAttribute Notice notice,
+			BindingResult bindingResult,
+			Model model) {
+		
+		if (bindingResult.hasErrors()){
+			return "notice/notice_add";
+		}
 		
 		noticeService.save(notice);
-		
-		return "redirect:/notice/list";
-	}
-	
-	@RequestMapping(value = "/addUpdate", method = RequestMethod.POST)
-	public String processAddUpdate(@ModelAttribute Notice notice, Model model) {
-		
-		noticeService.save(noticeService.findByView(notice));
 		
 		return "redirect:/notice/list";
 	}
@@ -84,7 +86,15 @@ public class NoticeController {
 		return "notice/notice_update";
 	}
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String processUpdate(@ModelAttribute Notice notice, Model model) {
+		
+		noticeService.save(notice);
+		
+		return "redirect:/notice/list";
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String processDelete(
 			@RequestParam(defaultValue="" ,required=false) long id,
 			Notice notice, Model model) {
