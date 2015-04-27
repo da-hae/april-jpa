@@ -1,6 +1,11 @@
 package net.dahae.april.model.notice;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import net.dahae.april.model.BoardBaseEntity;
 
@@ -12,11 +17,16 @@ public class Notice extends BoardBaseEntity {
 	/**
 	 * 제목 (title0
 	 */
+	@NotEmpty
+	@Length(max = 125)
+	@Column(length = 125)
 	private String title;
 	
 	/**
 	 * 내용 (content)
 	 */
+	@NotEmpty
+	@Lob
 	private String content;
 	
 	/**
