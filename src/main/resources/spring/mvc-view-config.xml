@@ -19,6 +19,7 @@
 				<bean class="org.springframework.web.servlet.view.JstlView">
 					<property name="url" value="" />
 				</bean>
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
 			</mvc:default-views>
 		</mvc:content-negotiation>
 		<!-- Registering BeanNameViewResolver and InternalViewResolver -->
